@@ -8,7 +8,6 @@ const onPress = ()=>{
 
 const elevation = 5;
 
-
 const App = () => {
   return (
     <>
