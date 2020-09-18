@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet , View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-export default ({elevation, onPress, children}) => {
-	const Wrapper = onPress? TouchableOpacity : View;
+export default ({ elevation, onPress, children }) => {
+	const Wrapper = onPress ? TouchableOpacity : View;
 
-	return(
+	return (
 		<Wrapper style={styles.container} onPress={onPress}>
 			{children}
 		</Wrapper>
@@ -12,11 +12,11 @@ export default ({elevation, onPress, children}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+	container: {
 		alignItems: 'center',
 		justifyContent: "center",
 		backgroundColor: '#DDDDDD',
-		padding: 30, 
+		padding: 30,
 		height: 100,
 		width: '80%',
 	},
