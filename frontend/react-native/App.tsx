@@ -1,18 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Card from './components/Card';
+import Card from './src/components/Card';
 
 const onPress = () => {
   console.log("este es el onPress");
 }
 
-const elevation = 5;
-
 const App = () => {
   return (
     <>
       <View style={styles.engine}>
-        <Card elevation={elevation} onPress={onPress}>
+        <Card elevation={1} onPress={onPress}>
           <Text style={styles.TextStyle}>Soy una Card</Text>
         </Card>
       </View>
@@ -23,7 +21,7 @@ const App = () => {
 const styles = StyleSheet.create({
   engine: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
 
