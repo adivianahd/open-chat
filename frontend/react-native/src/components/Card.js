@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { getElevation } from "../utilities/getElevation";
 
 export default ({ elevation, onPress, children, style={} }) => {
