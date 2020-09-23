@@ -1,6 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Home , Rooms } from './src/screens';
+import { Home , Rooms, Chat } from './src/screens';
 
 const AppNavigator = createStackNavigator({
   Home: {
@@ -9,6 +9,9 @@ const AppNavigator = createStackNavigator({
   Rooms: {
     screen: Rooms
   },
-},{ initialRouteName: 'Home'})
+  Chat: {
+    screen: Chat
+  },
+},{ initialRouteName: 'Rooms'})
 
 export default createAppContainer(AppNavigator);
