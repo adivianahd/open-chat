@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Input, Button } from '../components';
 
-const Home = ({ onPress, disable }) => {
+const Home = ({ onPress, onChange, disable }) => {
   return (
     <View style={styles.container}>
       <Text>Introduce tu NickName</Text>
-      <Input value={'AdivianaHd'} style={styles.InputStyle}/>
-      <Button/>
+      <Input value={'AdivianaHd'} onChange={onChange}/>
+      <Button onPress={onPress} />
     </View>
   )
 };
@@ -25,12 +25,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#eef',
   },
-
-  InputStyle:{ 
-    backgroundColor: '#fff',
-    height: 40, 
-    width: 200, 
-    borderColor: 'gray', 
-    borderWidth: 1
-  },
 });
+
