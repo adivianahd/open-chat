@@ -1,9 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 
-const Button = () => {
+const Button = ({props}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...props}>
       <Text>Boton</Text>
     </TouchableOpacity>
   )
