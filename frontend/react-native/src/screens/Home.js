@@ -1,10 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Input, Button } from '../components';
 
-const Home = () => {
+const Home = ({ onPress, onChange, disable }) => {
   return (
-    <View>
-      <Text>Yo soy home</Text>
+    <View style={styles.container}>
+      <Text>Introduce tu NickName</Text>
+      <Input value={'AdivianaHd'} onChange={onChange}/>
+      <Button onPress={onPress} />
     </View>
   )
 };
@@ -14,3 +17,13 @@ Home.navigationOptions = {
 };
 
 export default Home;
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#eef',
+  },
+});
+
