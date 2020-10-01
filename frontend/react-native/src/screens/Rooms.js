@@ -1,10 +1,19 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
+import { Card } from '../components';
 
-const Rooms = () => {
+const Rooms = ({ rooms , onSelect }) => {
   return (
     <View>
-      <Text>Salas de chat</Text>
+      <FlatList
+        data={rooms}
+        keyExtractor={room => room.id}
+        renderItem={(room) =>
+          <Card elevation={1} onPress={() => onSelect(room.item.id)}>
+            <Text>{room.item.name}</Text>
+          </Card>
+          }
+      />
     </View>
   )
 };
