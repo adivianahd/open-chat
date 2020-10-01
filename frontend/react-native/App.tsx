@@ -12,6 +12,6 @@ const AppNavigator = createStackNavigator({
   Chat: {
     screen: Chat
   },
-},{ initialRouteName: 'Rooms'})
+},{ initialRouteName: 'Chat'})
 
 export default createAppContainer(AppNavigator);
