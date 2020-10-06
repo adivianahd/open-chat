@@ -4,7 +4,7 @@ import { TouchableOpacity, Text } from 'react-native';
 const Button = props => {
   return (
     <TouchableOpacity {...props}>
-      <Text>Boton</Text>
+      <Text>{props.title}</Text>
     </TouchableOpacity>
   )
 };
