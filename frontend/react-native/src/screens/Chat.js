@@ -1,91 +1,43 @@
-import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { Input, Card, Button } from '../components';
+import React, { useRef, useEffect } from 'react';
+import { FlatList, KeyboardAvoidingView, StyleSheet, Text, View, Keyboard } from 'react-native';
+import { Button, Card, Input } from '../components';
 
-const messages = {
-  'messages': [
-      {
-          "message": "ME",
-          "user": {
-              "nickname": "ASTRID",
-              "id": "random1"
-          }
-      },
-      {
-          "message": "que?",
-          "user": {
-              "nickname": "ME",
-              "id": "random2",
-          },
-          "mine": true,
-      },
-      {
-        "message": "felicidades",
-        "user": {
-            "nickname": "ASTRID",
-            "id": "random1"
-        }
-    },
-    {
-      "message": "mi amor",
-      "user": {
-          "nickname": "ASTRID",
-          "id": "random1"
-      }
-  },
-  {
-    "message": "completaste la tarea de hoy :)",
-    "user": {
-        "nickname": "ASTRID",
-        "id": "random1"
-    }
-},
-{
-  "message": "GRACIAAAAAAAAAAAAAAAAAAAS",
-  "user": {
-      "nickname": "ME",
-      "id": "random2",
-  },
-  "mine": true,
-},
+const Chat = ({ room , user, onChangeText, send }) => {
+  const flatListRef = useRef();
 
-  ],
-  'id': "facd",
-  'name': "Room 1"
-}
-
-const users = {
-  'user': {
-    "nickname": "Astrid",
-    "id": "random2"
-  }
-}
-
-const Chat = ({ room = messages, user, onChangeText, send }) => {
-  
   const bubleSelector = item => {
-    const style = item.mine? styles.send : styles.received
-    
-     return <Card style={[style, styles.buble]}>
-        <Text>{item.user.nickname}</Text>
-        <Text>{item.message}</Text>
-      </Card>
+    const style = item.mine ? styles.send : styles.received
+
+    return <Card style={[style, styles.buble]}>
+      <Text>{item.user.nickname}</Text>
+      <Text>{item.message}</Text>
+    </Card>
   }
-  
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', () => {
+      setTimeout(() =>
+        flatListRef?.current.scrollToEnd({ animated: true }),
+        100)
+      }
+    )
+  })
+
   return (
-  <>
-    <View style={styles.container}>
-      <FlatList 
-        data={room.messages}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item})=> bubleSelector(item)}
-      />
-    </View>
-    <View style={styles.componentView}>
-      <Input style={styles.inputChat} value={'Escribe tu mensaje'} onChangeText={onChangeText}/>
-      <Button title='Send' onPress={send} style={styles.buttonSend}/>
-    </View>
-  </>
+    <>
+      <View style={styles.container}>
+        <FlatList
+          ref={r => flatListRef.current = r}
+          data={room.messages}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({ item }) => bubleSelector(item)}
+        />
+      </View>
+      <KeyboardAvoidingView style={styles.componentView} behavior={"height"} >
+        <Input style={styles.inputChat} value={'Escribe tu mensaje'} onChangeText={onChangeText} />
+        <Button title='Enviar' onPress={send} style={styles.buttonSend} />
+      </KeyboardAvoidingView>
+    </>
   )
 };
 
@@ -94,7 +46,7 @@ Chat.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 5,
     justifyContent: 'center',
     backgroundColor: '#eef',
@@ -122,12 +74,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#eef',
-
+    backgroundColor: '#acc',
+    padding: 10,
   },
 
   inputChat: {
     width: '80%',
-    borderRadius: 15, 
+    borderRadius: 15,
   },
 
   buttonSend: {
@@ -136,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '20%',
     backgroundColor: '#faa',
-    borderRadius: 15, 
+    borderRadius: 15,
   },
 })
 
