@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { getElevation } from "../utilities/getElevation";
 
-export default ({ elevation, onPress, children, style={} }) => {
+export default ({ elevation = 1, onPress, children, style={} }) => {
   const Wrapper = onPress ? TouchableOpacity : View;
 
   return (
