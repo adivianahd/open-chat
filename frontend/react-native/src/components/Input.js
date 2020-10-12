@@ -1,11 +1,11 @@
 import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
-const Input = ({ value, onChange }) => {
+const Input = ({ value, onChangeText, style }) => {
   return (
     <TextInput
-      style={styles.InputStyles}
-      onChangeText={onChange}
+      style={[styles.InputStyles, style]}
+      onChangeText={onChangeText}
       value={value}
     />
   )
